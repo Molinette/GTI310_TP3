@@ -1,4 +1,8 @@
-
+import data.Cycles;
+import data.Network;
+import parser.ConcreteParser;
+import solver.ConcreteSolver;
+import writer.ConcreteWriter;
 
 /**
  * The Application class defines a template method to call the elements to
@@ -19,5 +23,14 @@ public class Application {
 	 */
 	public static void main(String args[]) {
 		System.out.println("Unreal Networks Solver !");
+		ConcreteParser parser = new ConcreteParser();
+		ConcreteSolver solver = new ConcreteSolver();
+		ConcreteWriter writer = new ConcreteWriter();
+		
+		Network network = parser.parse(args[0]);
+		Cycles cycles = solver.solve(network);
+		writer.write(args[1], cycles);
+		
+		System.out.print(args[0] + " & " + args[1]);
 	}
 }
