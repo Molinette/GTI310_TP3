@@ -18,7 +18,8 @@ package parser;
  *            Parser interface.
  */
 public interface Parser<E> {
-
+	
+	
 	/**
 	 * The parse method is designed to scan an input file and produce an output
 	 * object defined by the <E> templace. The method should return null if the
