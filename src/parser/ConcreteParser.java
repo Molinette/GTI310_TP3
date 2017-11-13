@@ -19,7 +19,7 @@ public class ConcreteParser implements Parser<Network> {
 			FileReader fileReader = new FileReader(new File(filename));
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line = bufferedReader.readLine(); 
-			network = new Network(Integer.parseInt(line));
+			network = new Network(Integer.parseInt(line),0);
 			
 			while(line.compareTo("$") != 0){
 				System.out.println(line);
