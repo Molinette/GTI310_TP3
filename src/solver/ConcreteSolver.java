@@ -12,6 +12,8 @@ public class ConcreteSolver implements Solver<Network, Cycles> {
 	@Override
 	public Cycles solve(Network input) {
 		Cycles cycles = new Cycles();
+		input.printMatrix();
+		
 		return cycles;
 	}
 

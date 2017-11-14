@@ -22,7 +22,6 @@ public class Application {
 	 * @param args The array containing the arguments to the files.
 	 */
 	public static void main(String args[]) {
-		System.out.println("Unreal Networks Solver !");
 		ConcreteParser parser = new ConcreteParser();
 		ConcreteSolver solver = new ConcreteSolver();
 		ConcreteWriter writer = new ConcreteWriter();
@@ -30,7 +29,5 @@ public class Application {
 		Network network = parser.parse(args[0]);
 		Cycles cycles = solver.solve(network);
 		writer.write(args[1], cycles);
-		
-		System.out.print(args[0] + " & " + args[1]);
 	}
 }
