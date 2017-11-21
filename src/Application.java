@@ -29,5 +29,6 @@ public class Application {
 		Network network = parser.parse(args[0]);
 		Cycles cycles = solver.solve(network);
 		writer.write(args[1], cycles);
+		
 	}
 }
