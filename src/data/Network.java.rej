@@ -1,0 +1,12 @@
+diff a/src/data/Network.java b/src/data/Network.java	(rejected hunks)
+@@ -6,8 +6,8 @@
+ 	private int startingVertice;
+ 	
+ 
+-	public Network(int nbVertice, int startingVertice){
+-		matrix = new int[nbVertice][nbVertice];
++	public Network(int nbVertices, int startingVertice){
++		matrix = new int[nbVertices][nbVertices];
+ 		this.startingVertice = startingVertice;
+ 	}
+ 	
