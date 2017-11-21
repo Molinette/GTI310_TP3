@@ -39,6 +39,7 @@ public class ConcreteWriter implements Writer<Cycles> {
 		String cycleString = "";
 		
 		cycleString += Integer.toString(cycle.get(0)+1);
+		
 		for(int i = cycle.size() - 2; i >= 0; i--){
 			cycleString += " " + Integer.toString(cycle.get(i)+1);
 		}

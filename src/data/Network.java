@@ -50,17 +50,4 @@ public class Network {
 	public LinkedList<Edge> getNeighbours(int vertex){
 		return graph.get(vertex);
 	}
-	
-	public void printMatrix(){
-		/*String arrayString = "";
-		for (int i = 0; i < graph.size(); i++) {
-			for (int j = 0; j < graph.get(i).size(); j++) {
-				arrayString += "[" + (graph.get(i).get(j).endVertex+1) + " , " + graph.get(i).get(j).cost + "]";
-			}
-			arrayString += "\n";
-		}*/
-		
-		//System.out.println(arrayString);
-		//System.out.println(getNeighbours(0).get(0).endVertex);
-	}
 }

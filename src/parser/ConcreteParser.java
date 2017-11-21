@@ -16,7 +16,8 @@ public class ConcreteParser implements Parser<Network> {
 	}
 
 	@Override
-	public Network parse(String filename) {
+	public Network parse(String filename) 
+	{
 		Network network = null;
 		int nbVertices = 0;
 		int startingVertice = 0;

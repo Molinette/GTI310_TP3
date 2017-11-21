@@ -16,36 +16,44 @@ public class ConcreteSolver implements Solver<Network, Cycles> {
 	public Cycles solve(Network input) {
 		Cycles cycles = new Cycles();
 
+		//Path currently traveled
 		LinkedList<Integer> path = new LinkedList<Integer>();
-		CreateHamiltonianCycle(input, 0, new boolean[input.getNbVertices()], path, cycles);
+		
+		//Starts to find Hamiltonian cycle from the startingVertex
+		FindHamiltonianCycle(0, new boolean[input.getNbVertices()], path, input, cycles);
 		
 		return cycles;
 	}
 	
-	public void CreateHamiltonianCycle(Network input, int srcVertex, boolean[] visitedVertices, LinkedList<Integer> path, Cycles cycles){
-		boolean[] newVisitedVertices = visitedVertices.clone();
-		if(visitedVertices[srcVertex]){
-			if(isAllTrue(visitedVertices) && srcVertex == input.getStartingVertex()){
-				path.push(srcVertex);
- 
-				for(int i = 0; i < path.size(); i++){
-				//	System.out.println(path.get(i) + 1);
-				}
+	//Complexity O(V!)
+	//Recursive method that find Hamiltonian Cycles in a graph
+	public void FindHamiltonianCycle(int currentVertex, boolean[] visitedVertices, LinkedList<Integer> path, Network graph, Cycles cycles){
+		//Clone the visitedVertices array so that each branching get its own array
+		boolean[] visitedVerticesCopy = visitedVertices.clone();
+		
+		if(visitedVertices[currentVertex]){
+			//If all the vertex have been visited and we are back to the starting vertex
+			if(isAllTrue(visitedVertices) && currentVertex == graph.getStartingVertex()){
+				path.push(currentVertex);
 				
+				//Add the completed Hamiltonian cycle to the cycles list
 				cycles.AddCycle((LinkedList<Integer>)path.clone());
+				
 				path.pop();
 			}
 		}
 		else{
-			newVisitedVertices[srcVertex] = true;
-			path.push(srcVertex);
-
-			newVisitedVertices[srcVertex] = true;
-			for(int i = 0; i < input.getNeighbours(srcVertex).size(); i++){
-				CreateHamiltonianCycle(input, input.getNeighbours(srcVertex).get(i).vertex, newVisitedVertices, path, cycles);
+			visitedVerticesCopy[currentVertex] = true;
+			path.push(currentVertex);
+			
+			//Look at the neighbours
+			for(int i = 0; i < graph.getNeighbours(currentVertex).size(); i++){
+				FindHamiltonianCycle(graph.getNeighbours(currentVertex).get(i).vertex, visitedVerticesCopy, path, graph, cycles);
 			}
+			
 			path.pop();
 		}
+		
 	}
 	
 	public boolean isAllTrue(boolean[] array){
