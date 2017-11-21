@@ -16,7 +16,7 @@ import data.Graph;
 public class ConcreteParser implements Parser<Graph> {
 	final String FORMAT_EDGE = "^\\d+\\t\\d+\\t\\d+$"; //Regex for each edge format in the text file
 	final String FORMAT_VERTEX = "^\\d+$"; //Regex for starting vertex and number of vertex formats
-	final String FORMAT_TAB = "\\t"; //Regex for s
+	final String FORMAT_TAB = "\\t"; //Regex for splitting between edge info
 	
 	/**
 	 * Validate a text file format, proceed to parse it and create a Graph from it
@@ -29,11 +29,8 @@ public class ConcreteParser implements Parser<Graph> {
 	public Graph parse(String filename) 
 	{
 		Graph graph = null;
-		int nbVertices = 0;
-		int startingVertex = 0;
-		int src;
-		int dest;
-		int cost;
+		int nbVertices = 0; //number of vertices in the graph
+		int startingVertex = 0; //starting vertext of the graph for searching
 		
 		String[] splitLine;
 		try{
@@ -52,13 +49,14 @@ public class ConcreteParser implements Parser<Graph> {
 			
 			graph = new Graph(nbVertices, startingVertex);
 			
+			//Verify edges format and add them to the graph
 			while(line.compareTo("$") != 0){
 				if(line.matches(FORMAT_EDGE)){
 					splitLine = line.split(FORMAT_TAB);
 					
-					src = Integer.parseInt(splitLine[0]);
-					dest = Integer.parseInt(splitLine[1]);
-					cost = Integer.parseInt(splitLine[2]);
+					int src = Integer.parseInt(splitLine[0]);
+					int dest = Integer.parseInt(splitLine[1]);
+					int cost = Integer.parseInt(splitLine[2]);
 					
 					graph.addEdge(src-1, dest-1, cost);
 				}
