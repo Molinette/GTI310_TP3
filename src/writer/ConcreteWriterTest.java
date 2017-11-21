@@ -13,14 +13,6 @@ import org.junit.Test;
  *
  */
 public class ConcreteWriterTest {
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-
 	/**
 	 * Test method for {@link writer.ConcreteWriter#write(java.lang.String, data.Cycles)}.
 	 */

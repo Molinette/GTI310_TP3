@@ -15,27 +15,12 @@ import org.junit.Test;
 public class NetworkTest {
 
 	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		
-	}
-
-	/**
-	 * Test method for {@link data.Network#Network(int, int)}.
-	 */
-	@Test
-	public void testNetwork() {
-		fail("Not yet implemented");
-	}
-
-	/**
 	 * Test method for {@link data.Network#getStartingVertex()}.
 	 */
 	@Test
 	public void testGetStartingVertex() {
-		fail("Not yet implemented");
+		Network network = new Network(3, 1);
+		assertEquals(1, network.getStartingVertex());
 	}
 
 	/**
@@ -43,7 +28,8 @@ public class NetworkTest {
 	 */
 	@Test
 	public void testGetNbVertices() {
-		fail("Not yet implemented");
+		Network network = new Network(3, 1);
+		assertEquals(3, network.getNbVertices());
 	}
 
 	/**
@@ -51,7 +37,12 @@ public class NetworkTest {
 	 */
 	@Test
 	public void testAddEdge() {
-		fail("Not yet implemented");
+		Network network = new Network(3, 1);
+		network.addEdge(0, 1, 2);
+		assertEquals(6, network.getNeighbours(0).get(0).getCost());
+		assertEquals(8, network.getNeighbours(0).get(0).getVertex());
+		
+		
 	}
 
 	/**
@@ -59,7 +50,8 @@ public class NetworkTest {
 	 */
 	@Test
 	public void testGetNeighbours() {
-		fail("Not yet implemented");
+		Network network = new Network(3, 1);
+		network.addEdge(0, 1, 2);
 	}
 
 }

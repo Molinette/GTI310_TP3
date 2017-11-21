@@ -13,14 +13,6 @@ import org.junit.Test;
  *
  */
 public class ConcreteParserTest {
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-
 	/**
 	 * Test method for {@link parser.ConcreteParser#parse(java.lang.String)}.
 	 */

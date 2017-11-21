@@ -13,16 +13,7 @@ import org.junit.Test;
  *
  */
 public class ConcreteSolverTest {
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-	/**
-	 * Test method for {@link solver.ConcreteSolver#solve(data.Network)}.
-	 */
+	
 	@Test
 	public void testSolve() {
 		fail("Not yet implemented");
