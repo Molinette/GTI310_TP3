@@ -4,16 +4,16 @@ import java.util.LinkedList;
 import java.util.Stack;
 
 import data.Cycles;
-import data.Network;
+import data.Graph;
 
-public class ConcreteSolver implements Solver<Network, Cycles> {
+public class ConcreteSolver implements Solver<Graph, Cycles> {
 
 	public void ConcreteSolver(){
 		
 	}
 	
 	@Override
-	public Cycles solve(Network input) {
+	public Cycles solve(Graph input) {
 		Cycles cycles = new Cycles();
 
 		//Path currently traveled
@@ -27,7 +27,7 @@ public class ConcreteSolver implements Solver<Network, Cycles> {
 	
 	//Complexity O(V!)
 	//Recursive method that find Hamiltonian Cycles in a graph
-	public void FindHamiltonianCycle(int currentVertex, boolean[] visitedVertices, LinkedList<Integer> path, Network graph, Cycles cycles){
+	public void FindHamiltonianCycle(int currentVertex, boolean[] visitedVertices, LinkedList<Integer> path, Graph graph, Cycles cycles){
 		//Clone the visitedVertices array so that each branching get its own array
 		boolean[] visitedVerticesCopy = visitedVertices.clone();
 		

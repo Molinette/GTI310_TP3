@@ -1,5 +1,5 @@
 import data.Cycles;
-import data.Network;
+import data.Graph;
 import parser.ConcreteParser;
 import solver.ConcreteSolver;
 import writer.ConcreteWriter;
@@ -26,7 +26,7 @@ public class Application {
 		ConcreteSolver solver = new ConcreteSolver();
 		ConcreteWriter writer = new ConcreteWriter();
 		
-		Network network = parser.parse(args[0]);
+		Graph network = parser.parse(args[0]);
 		Cycles cycles = solver.solve(network);
 		writer.write(args[1], cycles);
 		
