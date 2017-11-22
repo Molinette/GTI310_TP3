@@ -45,7 +45,7 @@ public class ConcreteParser implements Parser<Graph> {
 			//Read the starting vertex and verify the format
 			line = bufferedReader.readLine();
 			if (line.matches(FORMAT_VERTEX))
-				startingVertex = Integer.parseInt(line);
+				startingVertex = Integer.parseInt(line) -1;
 			
 			graph = new Graph(nbVertices, startingVertex);
 			
