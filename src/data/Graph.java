@@ -26,6 +26,7 @@ public class Graph {
 	 * 
 	 */
 	public Graph(int nbVertices, int startingVertex){
+		this.startingVertex = startingVertex;
 		this.nbVertices = nbVertices;
 		vertices = new ArrayList<LinkedList<Edge>>(nbVertices);
 		for(int i = 0; i < nbVertices; i++){

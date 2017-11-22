@@ -18,7 +18,8 @@ public class ConcreteParserTest {
 	 */
 	@Test
 	public void testParse() {
-		fail("Not yet implemented");
+		ConcreteParser cp = new ConcreteParser();
+		assertNotNull(cp.parse("MuseeTest.txt"));
 	}
 
 }

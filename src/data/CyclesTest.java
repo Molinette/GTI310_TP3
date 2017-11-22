@@ -5,7 +5,8 @@ package data;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+import java.util.LinkedList;
+
 import org.junit.Test;
 
 /**
@@ -15,23 +16,25 @@ import org.junit.Test;
 public class CyclesTest {
 	@Test
 	public void testAddCycle() {
-		fail("Not yet implemented");
+		Cycles cycles = new Cycles();
+		LinkedList<Integer> test = new LinkedList<>();
+		test.add(45);
+		cycles.AddCycle(test);
+		String reponse ="" + cycles.GetCycle(0);
+		assertEquals("[45]",reponse);
 	}
-
-	/**
-	 * Test method for {@link data.Cycles#GetCycle(int)}.
-	 */
-	@Test
-	public void testGetCycle() {
-		fail("Not yet implemented");
-	}
-
 	/**
 	 * Test method for {@link data.Cycles#GetNbCycles()}.
 	 */
 	@Test
 	public void testGetNbCycles() {
-		fail("Not yet implemented");
+		Cycles cycles = new Cycles();
+		LinkedList<Integer> test = new LinkedList<>();
+		for(int i = 0; i < 5; i++){
+			test.add(i);
+			cycles.AddCycle(test);
+		}
+		assertEquals(5, cycles.GetNbCycles());
 	}
 
 }
