@@ -2,6 +2,7 @@ package parser;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import data.Graph;
@@ -26,7 +27,7 @@ public class ConcreteParser implements Parser<Graph> {
 	 * 
 	 */
 	@Override
-	public Graph parse(String filename) 
+	public Graph parse(String filename) throws Exception
 	{
 		Graph graph = null;
 		int nbVertices = 0; //number of vertices in the graph
@@ -41,14 +42,20 @@ public class ConcreteParser implements Parser<Graph> {
 			String line = bufferedReader.readLine(); 
 			if (line.matches(FORMAT_VERTEX))
 				nbVertices = Integer.parseInt(line);
+			else
+				throw new Exception("Wrong file format");
+				
 			
 			//Read the starting vertex and verify the format
 			line = bufferedReader.readLine();
 			if (line.matches(FORMAT_VERTEX))
 				startingVertex = Integer.parseInt(line) -1;
+			else
+				throw new Exception("Wrong file format");
 			
 			graph = new Graph(nbVertices, startingVertex);
 			
+			line = bufferedReader.readLine();
 			//Verify edges format and add them to the graph
 			while(line.compareTo("$") != 0){
 				if(line.matches(FORMAT_EDGE)){
@@ -60,14 +67,19 @@ public class ConcreteParser implements Parser<Graph> {
 					
 					graph.addEdge(src-1, dest-1, cost);
 				}
+				else
+					throw new Exception("Wrong file format");
 				
 				line = bufferedReader.readLine();
+				if(line == null)
+					return graph;
 			}
 			
+			//Close the stream
 			bufferedReader.close();
 		}
-		catch(Exception e){
-			
+		catch(FileNotFoundException e){
+			throw new FileNotFoundException("File not found");
 		}
 		
 		return graph;

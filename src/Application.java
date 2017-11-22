@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+
 import data.Cycles;
 import data.Graph;
 import parser.ConcreteParser;
@@ -26,9 +28,20 @@ public class Application {
 		ConcreteSolver solver = new ConcreteSolver();
 		ConcreteWriter writer = new ConcreteWriter();
 		
-		Graph network = parser.parse(args[0]);
-		Cycles cycles = solver.solve(network);
-		writer.write(args[1], cycles);
+		try{
+			Graph network = parser.parse(args[0]);
+			Cycles cycles = solver.solve(network);
+			writer.write(args[1], cycles);
+		}
+		catch(FileNotFoundException e){
+			System.out.println(e.getMessage());
+		}
+		catch(Exception e){
+			if(e.getMessage() != null)
+				System.out.println(e.getMessage());
+			else
+				System.out.println("An unexpected error occured");
+		}
 		
 	}
 }

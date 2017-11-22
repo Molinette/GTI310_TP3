@@ -29,6 +29,7 @@ public interface Parser<E> {
 	 * @param filename The complete path to the file to parse.
 	 * @return An object produced from the input file, or null if something
 	 * 		   went wrong.
+	 * @throws Exception 
 	 */
-	E parse(String filename);
+	E parse(String filename) throws Exception;
 }

@@ -8,12 +8,23 @@ import java.util.Stack;
 
 import data.Cycles;
 
+/**
+ * The ConcreteWriter class write the cycles in a text file in a particular format
+ * 
+ * @author Marc-Alexandre Monette Molina
+ * @version 1, 20/11/2017
+ * 
+ */
 public class ConcreteWriter implements Writer<Cycles> {
-
-	public ConcreteWriter(){
 	
-	}
-	
+	/**
+	 * 
+	 * Writes the cycles in a text files
+	 * 
+	 * @param filename		The file destination and file name to be written in
+	 * @param output		The cycle set to be written in the text file 
+	 * 
+	 */
 	@Override
 	public void write(String filename, Cycles output) {
 		
@@ -21,12 +32,16 @@ public class ConcreteWriter implements Writer<Cycles> {
 			FileWriter fileWriter = new FileWriter(new File(filename));
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			
+			//Writes the first cycles
 			bufferedWriter.write(cycleToString(output.GetCycle(0)));
+			
+			//Writes the other cycles and create a new line for each cycles
 			for(int i = 1; i < output.GetNbCycles(); i++){
 				bufferedWriter.write(System.getProperty("line.separator"));
 				bufferedWriter.write(cycleToString(output.GetCycle(i)));
 			}
-
+			
+			//Close the stream
 			bufferedWriter.close();
 			fileWriter.close();
 		}
@@ -35,6 +50,14 @@ public class ConcreteWriter implements Writer<Cycles> {
 		}
 	}
 	
+	/**
+	 * 
+	 * Turns a cycle to the right string format to be written in the text file
+	 * 
+	 * @param cycle		The cycle to be turned into a string
+	 * @return			The cycle as a String
+	 * 
+	 */
 	public String cycleToString(LinkedList<Integer> cycle){
 		String cycleString = "";
 		

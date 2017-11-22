@@ -6,11 +6,14 @@ import java.util.Stack;
 import data.Cycles;
 import data.Graph;
 
+/**
+ * The ConcreteSolver class is used to find hamiltonian cycles in graphs
+ * 
+ * @author Marc-Alexandre Monette Molina
+ * @version 1, 20/11/2017
+ * 
+ */
 public class ConcreteSolver implements Solver<Graph, Cycles> {
-
-	public void ConcreteSolver(){
-		
-	}
 	
 	@Override
 	public Cycles solve(Graph input) {
